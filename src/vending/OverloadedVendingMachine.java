@@ -20,16 +20,20 @@ public class OverloadedVendingMachine {
 		
 	}
 	
-	public int getSoftDrinkQty() {
+	public int getStock(SoftDrink softDrink) {
 		return softDrinkQty;
 	}
 	
-	public int getSaltySnacksQty() {
+	public int getStock(SaltySnack saltySnack) {
 		return saltySnacksQty;
 	}
 	
-	public int getChocolatesQty() {
+	public int getStock(Chocolate chocolate) {
 		return chocolatesQty;
+	}
+	
+	public int getStock() {
+		return softDrinkQty + saltySnacksQty+ chocolatesQty;
 	}
 	
 	public void buy(SoftDrink softDrink) {
@@ -59,4 +63,21 @@ public class OverloadedVendingMachine {
 		buy(new Chocolate("", 0.00));
 	}
 	
+	public void addStock(SoftDrink softDrink) {
+		softDrinkQty++;
+	}
+	
+	public void addStock(SaltySnack saltySnack) {
+		saltySnacksQty++;
+	}
+
+	public void addStock(Chocolate chocolate) {
+		chocolatesQty++;
+	}
+
+	public void addStock(Product product) {	
+		softDrinkQty += 3;
+		saltySnacksQty += 3;
+		chocolatesQty += 3;
+	}
 }
