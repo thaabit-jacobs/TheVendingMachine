@@ -33,7 +33,19 @@ public class ExtendableVendingMachine {
 			return 0;
 	}
 	
+	public void buy(Product product) {
+		if(product instanceof SoftDrink)
+			softDrinkQty--;
+		
+		if(product instanceof SaltySnack)
+			saltySnacksQty--;
+		
+		if(product instanceof Chocolate)
+			chocolatesQty--;
+	}
+	
 	public static void main(String[] args) {
+		
 	}
 
 }
