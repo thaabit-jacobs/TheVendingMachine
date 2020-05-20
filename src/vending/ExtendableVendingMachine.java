@@ -10,13 +10,17 @@ public class ExtendableVendingMachine {
 	
 	private int chocolatesQty;
 	
-	public ExtendableVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty){
+	private int biscuitQty;
+	
+	public ExtendableVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty, int biscuitQty){
 		
 		this.softDrinkQty = softDrinkQty;
 		
 		this.saltySnacksQty = saltySnacksQty;
 		
 		this.chocolatesQty = chocolatesQty;
+		
+		this.biscuitQty = biscuitQty;
 		
 	}
 	
@@ -30,7 +34,10 @@ public class ExtendableVendingMachine {
 		else if(product instanceof Chocolate)
 			return chocolatesQty;
 		
-		else if((Product)product instanceof Product)
+		else if(product instanceof Biscuit)
+			return biscuitQty;
+		
+		else if(product instanceof Product)
 			return softDrinkQty + saltySnacksQty + chocolatesQty;
 		
 		else
@@ -55,6 +62,12 @@ public class ExtendableVendingMachine {
 				chocolatesQty--;
 			else
 				System.out.println("Chocolate out of stock");
+		
+		if(product instanceof Biscuit)
+			if(biscuitQty > 0)
+				biscuitQty--;
+			else
+				System.out.println("Biscuits out of stock");
 	}
 	
 	public void buy(Product product, int amount) {
@@ -84,6 +97,15 @@ public class ExtendableVendingMachine {
 			else
 				chocolatesQty -= amount;	
 		}
+		
+		if(product instanceof Biscuit) {
+			if(biscuitQty == 0)
+				System.out.println("Bisuits out of stock");
+			else if(biscuitQty < amount)
+				System.out.println("Only " + biscuitQty + " in stock");
+			else
+				biscuitQty -= amount;	
+		}
 	}
 	
 	public void addStock(Product product) {
@@ -95,6 +117,9 @@ public class ExtendableVendingMachine {
 		
 		if(product instanceof Chocolate)
 			chocolatesQty += 3;
+		
+		if(product instanceof Biscuit)
+			biscuitQty += 3;
 	}
 	
 	public void addStock(Product product, int amount) {
@@ -106,9 +131,50 @@ public class ExtendableVendingMachine {
 		
 		if(product instanceof Chocolate)
 			chocolatesQty += amount;
+		
+		if(product instanceof Biscuit)
+			biscuitQty += amount;
 	}
 	
 	public static void main(String[] args) {
+		ExtendableVendingMachine evm = new ExtendableVendingMachine(15, 5, 5, 7);
+		Product softdrink = new SoftDrink("Coke", 12.00);
+		Product saltysnack = new SaltySnack("Salted peanuts", 18.99);
+		Product chocolate = new Chocolate("Catbery", 24.50);
+		Product biscuit = new Biscuit("Oreos", 29.99);
+		
+		System.out.println(softdrink.description());
+		System.out.println(saltysnack.description());
+		System.out.println(chocolate.description());
+		System.out.println(biscuit.description());
+		
+		evm.buy(saltysnack, 2);
+		evm.buy(chocolate);
+		evm.buy(softdrink, 4);
+		
+		evm.buy(biscuit, 5);
+		evm.buy(softdrink, 2);
+		
+		System.out.println(evm.getStock(softdrink));
+		System.out.println(evm.getStock(biscuit));
+		
+		evm.addStock(biscuit);
+		evm.addStock(saltysnack, 5);
+		evm.addStock(chocolate, 3);
+		
+		evm.buy(saltysnack, 4);
+		
+		evm.buy(chocolate, 2);
+		evm.buy(softdrink, 4);
+		
+		evm.buy(softdrink);
+		
+		evm.addStock(saltysnack);
+		evm.addStock(chocolate);
+		
+		evm.buy(chocolate);
+		evm.buy(softdrink);
+		
 		
 	}
 
