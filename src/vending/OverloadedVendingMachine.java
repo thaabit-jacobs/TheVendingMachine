@@ -64,34 +64,6 @@ public class OverloadedVendingMachine {
 		buy(new SaltySnack("", 0.00));
 		buy(new Chocolate("", 0.00));
 	}
-	
-	public void buy(Product product, int amount) {
-		if(product instanceof SoftDrink) {
-			if(softDrinkQty == 0) 
-				System.out.println("softDrink Out of stock");
-			else if(softDrinkQty < amount)
-				System.out.println("only " + softDrinkQty + " in stock");
-			else
-				softDrinkQty -= amount;
-			
-		} else if(product instanceof SaltySnack) {
-			if(saltySnacksQty == 0) 
-				System.out.println("saltySnacks Out of stock");
-			else if(saltySnacksQty < amount)
-				System.out.println("only " + saltySnacksQty + " in stock");
-			else
-				saltySnacksQty -= amount;
-			
-		} else if(product instanceof Chocolate) {
-			if(chocolatesQty == 0) 
-				System.out.println("chocolates Out of stock");
-			else if(chocolatesQty < amount)
-				System.out.println("only " + chocolatesQty + " in stock");
-			else
-				chocolatesQty -= amount;
-		} 
-		
-	}
 
 	public void addStock(SoftDrink softDrink) {
 		softDrinkQty++;
@@ -111,49 +83,41 @@ public class OverloadedVendingMachine {
 		chocolatesQty += 3;
 	}
 	
-	public void addStock(Product product, int amount) {
-		if(product instanceof SoftDrink)
-			softDrinkQty += amount;
-		
-		else if (product instanceof SaltySnack)
-			saltySnacksQty += amount;
-		
-		else if(product instanceof Chocolate)
-			chocolatesQty += amount;
-		
-	}
 	
 	public static void main(String[] args) {
 		OverloadedVendingMachine olvm = new OverloadedVendingMachine(15, 15, 10);
-		Product softdrink = new SoftDrink("softdrink", 12.00);
-		Product saltysnack = new SaltySnack("saltysnack", 18.99);
-		Product chocolate = new Chocolate("chocolate", 24.50);
+		SoftDrink softdrink = new SoftDrink("Coke", 12.00);
+		SaltySnack saltysnack = new SaltySnack("Salted peanuts", 18.99);
+		Chocolate chocolate = new Chocolate("Catbery", 24.50);
 		
 		System.out.println(softdrink.description());
 		System.out.println(saltysnack.description());
 		System.out.println(chocolate.description());
 		
-		olvm.buy((Chocolate)chocolate);
-		olvm.buy((SaltySnack)saltysnack);
-		olvm.buy(softdrink, 4);
+		olvm.buy(chocolate);
+		olvm.buy(saltysnack);
 		
 		System.out.println(olvm.getStock());
 		
-		olvm.buy(chocolate, 2);
-		olvm.buy((SaltySnack)saltysnack);
-		olvm.buy(softdrink, 4);
+		olvm.buy(saltysnack);
 		
-		System.out.println(olvm.getStock((SaltySnack)saltysnack));
-		System.out.println(olvm.getStock((SoftDrink)softdrink));
+		System.out.println(olvm.getStock(saltysnack));
+		System.out.println(olvm.getStock(softdrink));
 		
-		olvm.addStock(softdrink, 5);
+		olvm.buy(saltysnack);
 		
-		olvm.buy((SaltySnack)saltysnack);
-		olvm.buy(chocolate, 2);
-		olvm.buy(softdrink, 4);
-		olvm.buy(saltysnack, 4);
+		olvm.addStock(softdrink);
+		olvm.addStock(softdrink);
+		olvm.addStock(softdrink);
+		olvm.addStock(saltysnack);
+		olvm.addStock(saltysnack);
 		
-		olvm.addStock(softdrink, 3);
-		olvm.addStock(saltysnack, 3);
+		olvm.buy(chocolate);
+		olvm.buy(saltysnack);
+		olvm.buy(softdrink);
+		olvm.buy(softdrink);
+		olvm.buy(softdrink);
+		olvm.buy(softdrink);
+		
 	}
 }
