@@ -23,7 +23,7 @@ class BiscuitTest {
 	@Test
 	void chocolateDescription() {
 		Biscuit b = new Biscuit("Oreos", 29.99);
-		assertEquals(true, "name: Oreos price: 29.99".equals("name: Oreos price: 29.99"));
+		assertEquals(true, b.description().equals("name: Oreos price: 29.99"));
 	}
 
 }
