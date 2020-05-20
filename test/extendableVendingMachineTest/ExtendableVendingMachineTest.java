@@ -105,5 +105,27 @@ class ExtendableVendingMachineTest {
 		assertEquals(5, etvm.getStock((Chocolate)choc));
 	}
 	
+	@Test
+	void addStockSoftdrinkAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product sd = new SoftDrink("", 0.00);
+		etvm.addStock(sd, 10);
+		assertEquals(15, etvm.getStock((SoftDrink)sd));
+	}
 	
+	@Test
+	void addStockSaltySnacksAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product ss = new SaltySnack("", 0.00);
+		etvm.addStock(ss, 5);
+		assertEquals(12, etvm.getStock((SaltySnack)ss));
+	}
+	
+	@Test
+	void addStockChocolateAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product choc = new Chocolate("", 0.00);
+		etvm.addStock(choc, 18);
+		assertEquals(20, etvm.getStock((Chocolate)choc));
+	}
 }
