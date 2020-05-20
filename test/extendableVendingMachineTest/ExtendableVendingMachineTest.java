@@ -56,6 +56,30 @@ class ExtendableVendingMachineTest {
 		etvm.buy(choc);
 		assertEquals(1, etvm.getStock(choc));
 	}
+	
+	@Test
+	void buySoftDrinkAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product sd = new SoftDrink("", 0.00);
+		etvm.buy(sd, 5);
+		assertEquals(0, etvm.getStock(sd));
+	}
+	
+	@Test
+	void buySaltySnackAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product ss = new SaltySnack("", 0.00);
+		etvm.buy(ss, 2);
+		assertEquals(5, etvm.getStock(ss));
+	}
+	
+	@Test
+	void buyChocolateAnyAmount() {
+		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2);
+		Product choc = new Chocolate("", 0.00);
+		etvm.buy(choc, 1);
+		assertEquals(1, etvm.getStock(choc));
+	}
 
 	@Test
 	void addStockSoftDrink() {
