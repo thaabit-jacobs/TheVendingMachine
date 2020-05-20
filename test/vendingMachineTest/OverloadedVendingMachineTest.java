@@ -82,29 +82,6 @@ class OverloadedVendingMachineTest {
 		assertEquals(1, olvm.getStock(new Chocolate("", 0.00)));
 	}
 	
-	@Test
-	void BuySoftDrinkOfAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product sd = new SoftDrink("", 0.00);
-		olvm.buy(sd, 4);
-		assertEquals(1, olvm.getStock((SoftDrink)sd));
-	}
-	
-	@Test
-	void BuySaltySnackOfAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product ss = new SaltySnack("", 0.00);
-		olvm.buy(ss, 5);
-		assertEquals(2, olvm.getStock((SaltySnack)ss));
-	}
-	
-	@Test
-	void BuyChocolateOfAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product choc = new Chocolate("", 0.00);
-		olvm.buy(choc, 2);
-		assertEquals(0, olvm.getStock((Chocolate)choc));
-	}
 	
 	@Test
 	void AddStockSoftDrink() {
@@ -136,30 +113,6 @@ class OverloadedVendingMachineTest {
 		Product product = new Product("", 0.00); 
 		olvm.addStock(product);
 		assertEquals(23, olvm.getStock());
-	}
-	
-	@Test
-	void AddStockSoftDrinkAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product sd = new SoftDrink("", 0.00); 
-		olvm.addStock(sd, 10);
-		assertEquals(15, olvm.getStock((SoftDrink)sd));
-	}
-	
-	@Test
-	void AddStockSaltySnackAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product ss = new SaltySnack("", 0.00); 
-		olvm.addStock(ss, 3);
-		assertEquals(10, olvm.getStock((SaltySnack)ss));
-	}
-	
-	@Test
-	void AddStockChoclateAnyAmount() {
-		OverloadedVendingMachine olvm = new OverloadedVendingMachine(5, 7, 2);
-		Product choc = new Chocolate("", 0.00); 
-		olvm.addStock(choc, 3);;
-		assertEquals(5, olvm.getStock((Chocolate)choc));
 	}
 
 }
