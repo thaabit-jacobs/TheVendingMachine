@@ -36,7 +36,7 @@ class ExtendableVendingMachineTest {
 	@Test
 	void shouldGetAllStock() {
 		ExtendableVendingMachine etvm = new ExtendableVendingMachine(5, 7, 2, 10);
-		assertEquals(14, etvm.getStock(new Product("", 0.00)));
+		assertEquals(24, etvm.getStock(new Product("", 0.00)));
 	}
 	
 	@Test
