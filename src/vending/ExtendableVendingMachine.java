@@ -37,11 +37,8 @@ public class ExtendableVendingMachine {
 		else if(product instanceof Biscuit)
 			return biscuitQty;
 		
-		else if(product instanceof Product)
-			return softDrinkQty + saltySnacksQty + chocolatesQty;
-		
 		else
-			return 0;
+			return softDrinkQty + saltySnacksQty + chocolatesQty + biscuitQty;
 	}
 	
 	public void buy(Product product) {
