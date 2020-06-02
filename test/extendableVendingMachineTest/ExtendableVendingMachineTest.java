@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import vending.ExtendableVendingMachine;
+import vending.extendablevendingmachine.ExtendableVendingMachine;
+
 import vending.product.*;
 
 class ExtendableVendingMachineTest {
